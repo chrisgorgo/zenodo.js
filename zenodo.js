@@ -39,6 +39,19 @@ function getZenodoIDFromTag(conceptRecID, tagName, callback) {
     });
 }
 
+function getLatestIDFromconceptID(conceptRecID, callback) {
+    getContent('https://zenodo.org/api/records/' + conceptRecID, 
+               'application/json',
+                function(err, data) {
+                if (err !== null) {
+                    callback(err, null);
+                } else {
+                    targetID = data.id
+                    callback(null, targetID);
+                }
+    });
+}
+
 function getCitation(recordID, style, callback) {
   style = typeof style !== 'undefined' ? style : 'vancouver-brackets-no-et-al';
 	getContent('https://www.zenodo.org/api/records/' + recordID + '?style=' + style, 'text/x-bibliography',
