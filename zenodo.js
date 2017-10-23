@@ -77,7 +77,7 @@ function getDOI(recordID, callback) {
 }
 
 function getBIBTEX(recordID, callback) {
-	getContent('https://www.zenodo.org/api/records/' + recordID, 'text/x-bibtex',
+	getContent('https://www.zenodo.org/api/records/' + recordID, 'application/x-bibtex',
      function(err, data) {
         if (err !== null) {
            callback(err, null);
